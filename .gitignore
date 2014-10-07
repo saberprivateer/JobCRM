@@ -1,0 +1,14 @@
+# Created by .gitignore support plugin (hsz.mobi)
+bower.json
+node_modules
+.idea
+.idea/misc.xml
+.idea/.name
+.idea/encodings.xml
+.idea/uiDesigner.xml
+.idea/compiler.xml
+.idea/workspace.xml
+.idea/copyright
+.idea/modules.xml
+.idea/scopes
+.idea/vcs.xml
