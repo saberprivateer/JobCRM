@@ -1,0 +1,48 @@
+<div ng-show="isjobSelect()">
+    <button style="float: right; width:80px" ng-click="setEdit()" ng-hide="isEdit()">Edit</button>
+    <form novalidate class="form-horizontal well" role="form">
+        <div class="form-group">
+            <br>
+            <lable class="col-md-3 control-label"><b>Name</b></lable>
+            <lable class="col-md-8 control-label" style="text-align: left" ng-hide="isEdit()"><b>{{jobitems[getjobSelect()-1].name}}</b>
+            </lable>
+
+            <div class="col-md-8" ng-show="isEdit()">
+                <input type="text" class="form-control" placeholder="{{jobitems[getjobSelect()-1].name}}"
+                       ng-model="user.name"
+                        />
+            </div>
+        </div>
+        <div class="form-group">
+            <lable class="col-md-3 control-label"><b>Company</b></lable>
+            <lable class="col-md-8 control-label" style="text-align: left" ng-hide="isEdit()"><b>{{jobitems[getjobSelect()-1].company}}</b>
+            </lable>
+            <div class="col-md-8" ng-show="isEdit()">
+                <input type="text" class="form-control" placeholder="{{jobitems[getjobSelect()-1].company}}"
+                       ng-model="user.company"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <lable class="col-md-3 control-label"><b>Link</b></lable>
+            <lable class="col-md-8 control-label" style="text-align: left" ng-hide="isEdit()"><b>{{jobitems[getjobSelect()-1].link}}</b>
+            </lable>
+            <div class="col-md-8" ng-show="isEdit()">
+                <input type="text" class="form-control" placeholder="{{jobitems[getjobSelect()-1].link}}"
+                       ng-model="user.link"/>
+            </div>
+        </div>
+        <div>
+            <lable class="col-md-3" control-label
+            "><b>Created</b></lable>
+            <div class="col-md-8">
+                {{jobitems[getjobSelect()-1].creationDate}}
+            </div>
+        </div>
+        <br><br>
+
+        <div align="right" ng-show="isEdit()">
+            <button ng-click="reset();setEdit()">CANCEL</button>
+            <button ng-click="update(user)">SAVE</button>
+        </div>
+    </form>
+</div>

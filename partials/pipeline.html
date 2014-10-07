@@ -1,0 +1,31 @@
+<div ng-controller="jobitemCtrl">
+    <div class="row">
+        <div class="col-md-3" style="padding-left: 20px">
+            <h4 align="center">
+                <div style="position: relative">Job Detail</div>
+            </h4>
+        </div>
+        <div class="col-md-6">
+            <div ng-init="setCurrent(1)">
+                <pipelinenav></pipelinenav>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-3">Hello</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <jobitemdetail></jobitemdetail>
+        </div>
+        <div class="col-md-6">
+            <div ng-repeat="jobitem in jobitems | filter:{phase:phaseset}">
+                <jobitem></jobitem>
+            </div>
+        </div>
+        <section droppable="true">
+        <div class="col-md-3" style="width: 24%;height: 500px; background: lightblue" data-drop="true" jqyoui-droppable>
+            <p>Move a Job here to advance it to the next stage!</p>
+        </div>
+        </section>
+    </div>
+</div>

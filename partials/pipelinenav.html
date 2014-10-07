@@ -1,0 +1,20 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li ng-class="{ active: isCurrent(1)}">
+        <a href ng-click="setCurrent(1);setPhase('search')">
+        Search <span class="badge">{{(jobitems|filter:{phase:'search'}).length}}</span></a></li>
+    <li ng-class="{ active: isCurrent(2)}">
+        <a href ng-click="setCurrent(2);setPhase('qualified')">
+        Qualified <span class="badge">{{(jobitems|filter:{phase:'qualified'}).length}}</span></a></li>
+    <li ng-class="{ active: isCurrent(3)}">
+        <a href ng-click="setCurrent(3);setPhase('applied')">
+        Applied <span class="badge">{{(jobitems|filter:{phase:'applied'}).length}}</span></a></li>
+    <li ng-class="{ active: isCurrent(4)}">
+        <a href ng-click="setCurrent(4);setPhase('response')">
+        Response <span class="badge">{{(jobitems|filter:{phase:'response'}).length}}</span></a></li>
+    <li ng-class="{ active: isCurrent(5)}">
+        <a href ng-click="setCurrent(5);setPhase('interview')">
+        Interview <span class="badge">{{(jobitems|filter:{phase:'interview'}).length}}</span></a></li>
+    <li ng-class="{ active: isCurrent(6)}">
+        <a href ng-click="setCurrent(6);setPhase('negotiation')">
+        Negotiation <span class="badge">{{(jobitems|filter:{phase:'negotiation'}).length}}</span></a></li>
+</ul>
