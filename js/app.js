@@ -1,6 +1,6 @@
 'use strict';
 
-var jobcrmApp = angular.module('jobcrmApp', ['ngRoute','ngDragDrop']);
+var jobcrmApp = angular.module('jobcrmApp', ['ngRoute', 'ngDragDrop']);
 
 jobcrmApp.config(['$routeProvider', '$locationProvider',
     function ($routeProvider) {
@@ -77,14 +77,18 @@ jobcrmApp.directive("jobitemdetail", function () {
     };
 });
 
+jobcrmApp.directive("advance", function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/advance.html'
+    };
+});
+
 
 jobcrmApp.controller('jobitemCtrl', function ($scope, $http) {
+
     $http.get('DataStore/jobitems.json').success(function (data) {
         $scope.jobitems = data;
-    });
-
-    $http.post('DataStore/jobitems.json').success(function (data) {
-
     });
 
     function sortOn(collection, name) {
@@ -122,18 +126,18 @@ jobcrmApp.controller('jobitemCtrl', function ($scope, $http) {
 
     $scope.groups = [];
 
-    var current = 0;
-    var selectitem = 0;
-    var edititem = false;
+    $scope.current = 0;
+    $scope.selectitem = 0;
+    //var edititem = false;
 
     $scope.phaseset = "search";
 
     $scope.setCurrent = function (index) {
-        current = index;
+        $scope.current = index;
     };
 
     $scope.isCurrent = function (index) {
-        return index === current;
+        return index === $scope.current;
     };
 
     $scope.setPhase = function (index) {
@@ -141,65 +145,88 @@ jobcrmApp.controller('jobitemCtrl', function ($scope, $http) {
     };
 
     $scope.setDetail = function (index) {
-        selectitem = index;
-        console.log('Clicked to Edit ' + index)
+        $scope.selectitem = index;
+        console.log('Clicked to Edit ' + $scope.jobitems[index])
     };
 
     $scope.isjobSelect = function () {
-        return selectitem !== 0;
+        return $scope.selectitem !== 0;
         console.log('isjobEdit')
     };
 
     $scope.getjobSelect = function () {
-        return selectitem;
+        return $scope.selectitem;
     }
+
+    $scope.startCallback = function (event, ui, jobitem) {
+        console.log('You started draggin: ' + jobitem.name);
+        $scope.draggedJobitem = jobitem;
+    };
+
+    $scope.dragCallback = function (event, ui) {
+        document.body.style.cursor = '-webkit-grabbing';
+    };
+
+    $scope.myCallback = function (event, ui, jobitem) {
+        moveNext(jobitem.id);
+        console.log('Dropped into something ' + jobitem);
+    };
+
+    $scope.items = [];
+
+    function moveNext(index) {
+        switch ($scope.jobitems[index - 1].phase) {
+            case 'search':
+                $scope.jobitems[index - 1].phase = 'qualified';
+                break;
+            case 'qualified':
+                $scope.jobitems[index - 1].phase = 'applied';
+                break;
+            case 'applied':
+                $scope.jobitems[index - 1].phase = 'response';
+                break;
+            case 'response':
+                $scope.jobitems[index - 1].phase = 'interview';
+                break;
+            case 'interview':
+                $scope.jobitems[index - 1].phase = 'negotiation';
+                break;
+        }
+    }
+
+    $scope.promote = function (index) {
+        moveNext(index);
+    };
+
+    $scope.demote = function () {
+
+    };
+
+//-----------------------------
+
+    var edititem = false;
+
+    $scope.holdforedit = [];
 
     $scope.isEdit = function () {
         return edititem;
     };
 
     $scope.setEdit = function () {
+        //holdforedit = $scope.jobitems[index];
         edititem = !edititem;
     };
 
-    this.myCallback = function(event, ui, jobitem){
-        console.log('Dropped into something' + jobitem);
+    $scope.updatejobItem = function (index, holdforedit) {
+        $scope.jobitems[index].name = holdforedit.name;
+
+//        $http.put('DataStore/jobitems.json', {: holdforedit.name});
     };
 
-    $scope.items=[];
-
-    $scope.handleDragStart = function(e){
-        e.dataTransfer.setData(this.jobitem);
-    };
-
-    $scope.handleDrop = function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var dataText = e.dataTransfer.getData(this.jobitem);
-        $scope.$apply(function() {
-            $scope.items.push(dataText);
-        });
-        console.log($scope.items);
+    $scope.reset = function () {
+        $scope.holdforedit = angular.copy($scope.jobitems[$scope.selectitem - 1]);
+        edititem = false;
     };
 
 
-});
-
-jobcrmApp.directive('droppable', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element[0].addEventListener('drop', scope.handleDrop, false);
-            element[0].addEventListener('dragover', scope.handleDragOver, false);
-        }
-    }
-});
-
-jobcrmApp.directive('draggable', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element[0].addEventListener('dragstart', scope.handleDragStart, false);
-        }
-    }
 });

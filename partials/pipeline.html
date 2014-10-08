@@ -11,21 +11,25 @@
                 <br>
             </div>
         </div>
-        <div class="col-md-3">Hello</div>
+        <div class="col-md-3">
+            <h5 align="center">Move a Job here to advance it to the next stage!</h5>
+        </div>
     </div>
+
     <div class="row">
         <div class="col-md-3">
             <jobitemdetail></jobitemdetail>
         </div>
+
         <div class="col-md-6">
             <div ng-repeat="jobitem in jobitems | filter:{phase:phaseset}">
                 <jobitem></jobitem>
             </div>
         </div>
-        <section droppable="true">
-        <div class="col-md-3" style="width: 24%;height: 500px; background: lightblue" data-drop="true" jqyoui-droppable>
-            <p>Move a Job here to advance it to the next stage!</p>
+
+        <div class="col-md-3">
+            <advance></advance>
         </div>
-        </section>
+
     </div>
 </div>

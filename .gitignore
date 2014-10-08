@@ -12,3 +12,5 @@ node_modules
 .idea/modules.xml
 .idea/scopes
 .idea/vcs.xml
+ShapingUpWithAngular.iml
+npm-debug.log

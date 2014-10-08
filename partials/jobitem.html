@@ -1,7 +1,14 @@
-<section draggable="true">
-<div data-drag="true" data-jqyoui-options="{revert:'invalid'}" jqyoui-droppable jqyoui-draggable="{animate:true}">
-    <div class="well well-lg" ng-click="setDetail(jobitem.id)">
-        {{jobitem.name}}
+<div data-drag="true" data-jqyoui-options="{revert:'invalid'}" jqyoui-droppable
+     jqyoui-draggable="{onStart:'startCallback(jobitem)',onDrag:'dragCallback()',animate:true}">
+    <div class="well well-lg" ng-click="setDetail(jobitem.id);reset()">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{{jobitem.link}}" target="_blank">{{jobitem.name}}</a>&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>
+            </div>
+            <div ng-show="'{{jobitem.imgUrl}}'" class="pull-right">
+                <img class="media-object" style="max-height: 40px" ng-src='img/{{jobitem.imgUrl}}.png'>
+            </div>
+            <div class="pull-right" ng-hide="'{{jobitem.imgUrl}}'">{{jobitem.company}}</div>
+        </div>
     </div>
 </div>
-</section>

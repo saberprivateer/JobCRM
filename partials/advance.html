@@ -1,0 +1,22 @@
+<div>
+    <div class="well" style="margin-right: 20px;height:200px;min-height: 100%" align="center" data-drop="true"
+         jqyoui-droppable="{onDrop:'myCallback(draggedJobitem)'}">
+        <h5>ADVANCE JOB</h5>
+
+        <div ng-switch on="current">
+            <h3 ng-switch-when="1">Qualified</h3>
+
+            <h3 ng-switch-when="2">Applied</h3>
+
+            <h3 ng-switch-when="3">Response</h3>
+
+            <h3 ng-switch-when="4">Interview</h3>
+
+            <h3 ng-switch-when="5">Negotiation</h3>
+
+            <h3 ng-switch-when="6">VICTORY</h3>
+
+            <p>(Drop to advance stage)</p>
+        </div>
+    </div>
+</div>

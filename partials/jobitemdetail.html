@@ -1,5 +1,6 @@
 <div ng-show="isjobSelect()">
-    <button style="float: right; width:80px" ng-click="setEdit()" ng-hide="isEdit()">Edit</button>
+    <button style="float: left; width:80px" ng-click="demote()">Demote</button>
+    <button style="float: right; width:80px" ng-click="setEdit(getjobSelect()-1)" ng-hide="isEdit()">Edit</button>
     <form novalidate class="form-horizontal well" role="form">
         <div class="form-group">
             <br>
@@ -9,7 +10,7 @@
 
             <div class="col-md-8" ng-show="isEdit()">
                 <input type="text" class="form-control" placeholder="{{jobitems[getjobSelect()-1].name}}"
-                       ng-model="user.name"
+                       ng-model="holdforedit.name"
                         />
             </div>
         </div>
@@ -19,7 +20,7 @@
             </lable>
             <div class="col-md-8" ng-show="isEdit()">
                 <input type="text" class="form-control" placeholder="{{jobitems[getjobSelect()-1].company}}"
-                       ng-model="user.company"/>
+                       ng-model="holdforedit.company"/>
             </div>
         </div>
         <div class="form-group">
@@ -28,12 +29,12 @@
             </lable>
             <div class="col-md-8" ng-show="isEdit()">
                 <input type="text" class="form-control" placeholder="{{jobitems[getjobSelect()-1].link}}"
-                       ng-model="user.link"/>
+                       ng-model="holdforedit.link"/>
             </div>
         </div>
         <div>
             <lable class="col-md-3" control-label
-            "><b>Created</b></lable>
+            ><b>Created</b></lable>
             <div class="col-md-8">
                 {{jobitems[getjobSelect()-1].creationDate}}
             </div>
@@ -41,8 +42,8 @@
         <br><br>
 
         <div align="right" ng-show="isEdit()">
-            <button ng-click="reset();setEdit()">CANCEL</button>
-            <button ng-click="update(user)">SAVE</button>
+            <button ng-click="reset();">CANCEL</button>
+            <button ng-click="updatejobItem(getjobSelect()-1,holdforedit)">SAVE</button>
         </div>
     </form>
 </div>

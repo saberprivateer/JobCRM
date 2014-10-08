@@ -3,6 +3,7 @@
         "id": 1,
         "name": "Product Manager",
         "company": "Zebra Tech",
+        "imgUrl":"zebratech",
         "link": "http://www.zebra.com/us/en.html",
         "creationDate": "Mon, 26 Aug 2013",
         "phase": "qualified"
@@ -12,6 +13,7 @@
         "name": "Marketing Manager Plus",
         "company": "Dog Vacay",
         "link": "http://dogvacay.com/",
+        "imgUrl":null,
         "creationDate": "Fri, 07 Aug 2013",
         "phase": "qualified"
     },
@@ -19,6 +21,7 @@
         "id": 3,
         "name": "Mint",
         "company": "Port on Left",
+        "imgUrl":"placeholder",
         "link": "http://www.zebra.com/us/en.html",
         "creationDate": "Mon, 26 Aug 2013",
         "phase": "applied"
@@ -28,54 +31,61 @@
         "name": "Basil",
         "company": "Pot on Right",
         "link": "http://dogvacay.com/",
+        "imgUrl":null,
         "creationDate": "Fri, 07 Aug 2013",
         "phase": "applied"
     },
     {
         "id": 5,
         "name": "Where?",
-        "company": "Pot on Right",
+        "company": "Dog Vacay",
+        "imgUrl": "dogvacay",
         "link": "http://dogvacay.com/",
         "creationDate": "Fri, 07 Aug 2013",
         "phase": "search"
     },
     {
-        "id": 1,
+        "id": 6,
         "name": "Product Manager",
         "company": "Zebra Tech",
+        "imgUrl":null,
         "link": "http://www.zebra.com/us/en.html",
         "creationDate": "Mon, 26 Aug 2013",
         "phase": "response"
     },
     {
-        "id": 2,
+        "id": 7,
         "name": "Marketing Manager Plus",
         "company": "Dog Vacay",
+        "imgUrl":null,
         "link": "http://dogvacay.com/",
         "creationDate": "Fri, 07 Aug 2013",
         "phase": "response"
     },
     {
-        "id": 3,
+        "id": 8,
         "name": "Mint",
         "company": "Port on Left",
         "link": "http://www.zebra.com/us/en.html",
         "creationDate": "Mon, 26 Aug 2013",
+        "imgUrl":null,
         "phase": "response"
     },
     {
-        "id": 4,
+        "id": 9,
         "name": "Basil",
         "company": "Pot on Right",
         "link": "http://dogvacay.com/",
         "creationDate": "Fri, 07 Aug 2013",
+        "imgUrl":null,
         "phase": "response"
     },
     {
-        "id": 5,
+        "id": 10,
         "name": "Where?",
         "company": "Pot on Right",
         "link": "http://dogvacay.com/",
+        "imgUrl":null,
         "creationDate": "Fri, 07 Aug 2013",
         "phase": "response"
     }
